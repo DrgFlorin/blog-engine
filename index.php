@@ -7,6 +7,8 @@
     <title>Clity - Blog engine</title>
 </head>
 <body>
-    
+    <form action="index.php" method="GET">
+        <input type="text">
+    </form>
 </body>
 </html>
