@@ -1,49 +1,12 @@
 <?php
-error_reporting(0);
 include 'configs/_db.php';
-$title = $_POST['title'];
-$content = $_POST['content'];
-$allow_comments = $_POST['allow_comments'];
-$author = $_POST['author'];
-$img_url = $_POST['img_url'];
 
-$query = "INSERT INTO clity_posts (`title`, `content`, `allow_comments`, `author`, `img_url`) VALUES ('$title', '$content', '$allow_comments', '$author', '$img_url')";
+$query = "SELECT title, date, content, allow_comments, author, img_url FROM clity_posts";
+$result = $conn->query($query);
 
-if (isset($_POST['addBtn'])) {
-    if ($conn->query($query) === true) {
-        echo "Post Added";
-    } else {
-        echo "Error: " .$query . "<br>". $conn->error;
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "title: ".$row['title']."<br> date: ".$row['date']."<br> content: ".$row['content']."<br> allow_comments: ".$row['allow_comments']."<br> author".$row['author']."<br> img link: <img src=\"".$row['img_url']."\"><br><br>";
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clity - Blog engine</title>
-    <link rel="stylesheet" href="assets\css\style.scss" type="text/css">
-</head>
-
-<body>
-    <form action="index.php" method="POST">
-        <input type="text" name="title" placeholder="title...">
-
-        <textarea rows="4" cols="50" name="content" placeholder="content..."></textarea>
-        <div class="question">Allow Comments?</div>
-        <select name="allow_comments">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-
-        <input type="number" name="author" placeholder="author...ID">
-
-        <input type="text" name="img_url" placeholder="image...">
-
-        <input type="submit" name="addBtn" value="Add Post">
-    </form>
-</body>
-</html>
