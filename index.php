@@ -25,15 +25,9 @@ if (isset($_POST['addBtn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clity - Blog engine</title>
+    <link rel="stylesheet" href="assets\css\style.scss" type="text/css">
 </head>
-<style>
-    input, select, .question {
-        display:block;
-    }
-    input {
-        margin: 5px 0;
-    }
-</style>
+
 <body>
     <form action="index.php" method="POST">
         <input type="text" name="title" placeholder="title...">
