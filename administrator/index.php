@@ -19,6 +19,11 @@ if (isset($_POST['addBtn'])) {
         echo "Error: " .$query."<br>". $conn->error;
     }
 }
+if ($_SESSION['logged'] == 1) {
+    echo "Logged In";
+} else {
+    echo "Not logged in";
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +36,8 @@ if (isset($_POST['addBtn'])) {
 </head>
 
 <body>
-    <form action="index.php" method="POST">
+    <h2><a href="../">Back to Main</a></h2>
+    <form action="./" method="POST">
         <input type="text" name="title" placeholder="title...">
 
         <textarea rows="4" cols="50" name="content" placeholder="content..."></textarea>
