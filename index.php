@@ -2,7 +2,6 @@
 include 'configs/_db.php';
 $email = $_POST['email'];
 $pwd = $_POST['pwd'];
-
 if (isset($_POST['login'])) {
     $query = "SELECT id, username, email, created, admin FROM clity_users WHERE email='$email'";
     $result = $conn->query($query);
@@ -25,6 +24,8 @@ if (isset($_POST['login'])) {
                 echo "Wrong Password";
             }
         }
+    } else {
+        echo "Wrong Password";
     }
 }
 if ($_SESSION['logged'] == 1) {

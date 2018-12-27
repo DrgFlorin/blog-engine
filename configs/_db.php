@@ -12,4 +12,5 @@ if ($conn->connect_error) {
     //echo "Succesfully Connected";
 }
 session_start();
+error_reporting(0);
 ?>
