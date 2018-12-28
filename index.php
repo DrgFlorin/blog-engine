@@ -2,6 +2,10 @@
 include 'configs/_db.php';
 $email = $_POST['email'];
 $pwd = $_POST['pwd'];
+if ($_SESSION['not_logged'] == true) {
+    echo "You are not logged either you don't have permission";
+    unset($_SESSION['not_logged']);
+}
 if (isset($_POST['login'])) {
     $query = "SELECT id, username, email, created, admin FROM clity_users WHERE email='$email'";
     $result = $conn->query($query);
