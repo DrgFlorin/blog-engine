@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
                 echo "Logged In Succefully";
                 $_SESSION['logged'] = true;
             } else {
-                echo "Wrong Password";
+                echo "Wrong Credentials / Create an account or be more careful";
             }
         }
     } else {
@@ -36,9 +36,9 @@ if ($_SESSION['logged'] == 1) {
     if ($admin == 1) {
         echo "<h2><a href=\"administrator/\">New Post</a></h2>";
     }
-    echo "<form action=\"./\" method=\"POST\"><input type=\"submit\" name=\"logOut\" value=\"Log Out\"></form";
+    echo "<form action=\"./\" method=\"POST\"><input type=\"submit\" name=\"logOut\" value=\"Log Out\"></form"; //LOGOUT BUTTON
 } else {
-    "Please log in to be able to post";
+    // "Please log in to be able to post"; 
 }
 if (isset($_POST['logOut'])) {
     $_SESSION['logged'] = 0;
@@ -46,12 +46,23 @@ if (isset($_POST['logOut'])) {
 }
 
 ?>
-<form action="./" method="POST">
-    <input type="email" name="email" placeholder="email...">
-    <input type="password" name="pwd" placeholder="password...">
-    <input type="submit" name="login" value="Login>>">
-</form>
-<h3><a href="register/">Register</a></h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog - Engine</title>
+</head>
+<body>
+    <form action="./" method="POST">
+        <input type="email" name="email" placeholder="email...">
+        <input type="password" name="pwd" placeholder="password...">
+        <input type="submit" name="login" value="Login>>">
+    </form>
+    <h3><a href="register/">Register</a></h3>
+</body>
+</html>
 
 
 <?php

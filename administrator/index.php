@@ -20,7 +20,7 @@ if (isset($_POST['addBtn'])) {
     }
 }
 if ($_SESSION['logged'] == true) {
-    echo "Logged In";
+    // echo "Logged In";
 } else {
     header('Location: http://localhost/blog-engine/');
     $_SESSION['not_logged'] = true;
@@ -33,7 +33,7 @@ if ($_SESSION['logged'] == true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clity - Blog engine</title>
+    <title>Admin Panel</title>
 </head>
 
 <body>
