@@ -29,12 +29,13 @@ if (isset($_POST['login'])) {
             }
         }
     } else {
-        echo "Wrong Password";
+        echo "Wrong Credentials";
     }
 }
 if ($_SESSION['logged'] == 1) {
     if ($admin == 1) {
         echo "<h2><a href=\"administrator/\">New Post</a></h2>";
+        $_SESSION['admin'] = 1;
     }
     echo "<form action=\"./\" method=\"POST\"><input type=\"submit\" name=\"logOut\" value=\"Log Out\"></form"; //LOGOUT BUTTON
 } else {
@@ -42,6 +43,7 @@ if ($_SESSION['logged'] == 1) {
 }
 if (isset($_POST['logOut'])) {
     $_SESSION['logged'] = 0;
+    $_SESSION['admin'] = 0;
     header("Refresh:0");
 }
 

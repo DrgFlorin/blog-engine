@@ -19,8 +19,8 @@ if (isset($_POST['addBtn'])) {
         echo "Error: " .$query."<br>". $conn->error;
     }
 }
-if ($_SESSION['logged'] == true) {
-    // echo "Logged In";
+if ($_SESSION['logged'] == true && $_SESSION['admin'] == 1) {
+    echo "Logged In";
 } else {
     header('Location: http://localhost/blog-engine/');
     $_SESSION['not_logged'] = true;
