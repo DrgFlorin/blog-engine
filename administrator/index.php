@@ -22,7 +22,7 @@ if (isset($_POST['addBtn'])) {
 
 // MAKING SURE THE USERS IS ADMIN
 if ($_SESSION['logged'] == true && $_SESSION['admin'] == 1) {
-    echo "Logged In";
+    // echo "Logged In";
 } else {
     header('Location: http://localhost/blog-engine/');
     $_SESSION['not_logged'] = true;
