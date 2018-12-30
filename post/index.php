@@ -1,10 +1,13 @@
 <?php
 include '../configs/_db.php';
+// GETTING DATA
 $id = $_REQUEST['s'];
 
+// QUERY FOR THE CONN FUNC
 $query = "SELECT title, date, content, allow_comments, author, img_url FROM clity_posts WHERE id='$id'";
 $result = $conn->query($query);
 
+// SELECTING ROWS FROM DATABASE AND INSERTNG THEM INTO VARIABLES
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $title = $row['title'];

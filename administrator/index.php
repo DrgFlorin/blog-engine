@@ -1,17 +1,17 @@
 <?php
 //error_reporting(0);
 include '../configs/_db.php';
+// GETTING DATA
 $title = $_POST['title'];
 $content = $_POST['content'];
 $allow_comments = $_POST['allow_comments'];
 $author = $_POST['author'];
 $img_url = $_POST['img_url'];
 
-// ADDING THE TITTLE TO THE SESSION
-$_SESSION['title'] = $title;
-
+// QUERY FOR CONN FUNC
 $query = "INSERT INTO clity_posts (`title`, `content`, `allow_comments`, `author`, `img_url`) VALUES ('$title', '$content', '$allow_comments', '$author', '$img_url')";
 
+// ADDING DATA TO DATABASE
 if (isset($_POST['addBtn'])) {
     if ($conn->query($query) === true) {
         echo "Post Added";
@@ -19,6 +19,8 @@ if (isset($_POST['addBtn'])) {
         echo "Error: " .$query."<br>". $conn->error;
     }
 }
+
+// MAKING SURE THE USERS IS ADMIN
 if ($_SESSION['logged'] == true && $_SESSION['admin'] == 1) {
     echo "Logged In";
 } else {

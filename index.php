@@ -1,11 +1,16 @@
 <?php
 include 'configs/_db.php';
+// GETTING LOGIN DATA
 $email = $_POST['email'];
 $pwd = $_POST['pwd'];
+
+// THIS IS REDIRECT FROM ADMIN WHEN USER TRIES TO ACCES IT W/OUT PERMISSION
 if ($_SESSION['not_logged'] == true) {
     echo "You are not logged either you don't have permission";
     unset($_SESSION['not_logged']);
 }
+
+// LOGGIN IN AND SAVING USERS DATA IN VARIABLES
 if (isset($_POST['login'])) {
     $query = "SELECT id, username, email, created, admin FROM clity_users WHERE email='$email'";
     $result = $conn->query($query);
@@ -17,6 +22,8 @@ if (isset($_POST['login'])) {
             $admin = $row['admin']; 
         }
     }
+
+    // PART OF LOGGING PROCCES - PASSWORD VERIFICATION
     $query = "SELECT pwd FROM clity_users_pwd WHERE id='$id'";
     $result = $conn->query($query);
     if($result->num_rows > 0) {
@@ -25,25 +32,27 @@ if (isset($_POST['login'])) {
                 echo "Logged In Succefully";
                 $_SESSION['logged'] = true;
             } else {
-                echo "Wrong Credentials / Create an account or be more careful";
+                echo "Wrong Credentials / Create an account or be more careful"; // IF WRONG PASSWORD
             }
         }
     } else {
-        echo "Wrong Credentials";
+        echo "Wrong Credentials"; // IF NO USER FOUND
     }
 }
-if ($_SESSION['logged'] == 1) {
+
+// CHECK IF USER IS ADMIN OR NOT
+if ($_SESSION['logged']) {
     if ($admin == 1) {
         echo "<h2><a href=\"administrator/\">New Post</a></h2>";
-        $_SESSION['admin'] = 1;
+        $_SESSION['admin'] = true;
     }
     echo "<form action=\"./\" method=\"POST\"><input type=\"submit\" name=\"logOut\" value=\"Log Out\"></form"; //LOGOUT BUTTON
 } else {
-    // "Please log in to be able to post"; 
+     echo "Please login as admin to be able to post"; // IF THE USER IS NOT ADMIN DOES THIS
 }
 if (isset($_POST['logOut'])) {
-    $_SESSION['logged'] = 0;
-    $_SESSION['admin'] = 0;
+    $_SESSION['logged'] = false;
+    $_SESSION['admin'] = false;
     header("Refresh:0");
 }
 

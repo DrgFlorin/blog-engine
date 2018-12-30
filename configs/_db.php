@@ -1,4 +1,11 @@
 <?php
+session_start();
+error_reporting(0);
+// DECLARATION OF SESSIONS
+$_SESSION['not_logged'];
+$_SESSION['logged'];
+$_SESSION['admin'];
+// DATABASE CONF
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,6 +18,5 @@ if ($conn->connect_error) {
 } else {
     //echo "Succesfully Connected";
 }
-session_start();
-error_reporting(0);
+
 ?>
