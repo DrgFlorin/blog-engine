@@ -1,9 +1,9 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 // SOME CONFIG FILES
 $folder_of_website = 'blog-engine';
-$posts_per_page = 3;
+$page_limit = 2;
 // MAIN CSS FILE
 $main_css = 'style.css';
 // DECLARATION OF SESSIONS

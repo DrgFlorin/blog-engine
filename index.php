@@ -89,22 +89,13 @@ if (isset($_POST['logOut'])) {
     }
     // PAGINATION // ISSUES PROBLEM
     $page = $_REQUEST['p'];
-    if ($page > 1) {
-        $highest_id = --$page * ++$posts_per_page;
-    }
-    $lowest_id = $highest_id - --$posts_per_page;
-    echo "low :".$lowest_id." high: ".$highest_id."<br>";
 
-    /*
-    $big_page = $page * $posts_per_page;
-    $small_page = --$page * $posts_per_page;
-     REMAKE THIS
-    p1 = 1 * 2 = 2; 2posts 1 2
-    p2 = 2 * 2 = 4; 2posts 3 4
-    */
+    // TEST 
 
-    // DISPLAY THE POSTS
-    $query = "SELECT id, title, date, content, allow_comments, author, img_url FROM clity_posts WHERE id BETWEEN $lowest_id AND $highest_id ORDER BY id DESC";
+    // END OF TEST
+
+    // // DISPLAY THE POSTS
+    $query = "SELECT id, title, date, content, allow_comments, author, img_url FROM clity_posts ORDER BY id DESC";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
