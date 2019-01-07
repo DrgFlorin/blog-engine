@@ -15,7 +15,7 @@ if ($_SESSION['not_logged'] == true) {
     unset($_SESSION['not_logged']);
 }
 
-// LOGGIN IN AND SAVING USERS DATA IN VARIABLES
+// LOGGING IN AND SAVING USERS DATA IN VARIABLES
 if (isset($_POST['login'])) {
     $query = "SELECT id, username, email, created, admin FROM clity_users WHERE email='$email'";
     $result = $conn->query($query);
