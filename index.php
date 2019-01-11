@@ -2,7 +2,7 @@
 include 'configs/_db.php';
 
 // CHECK AND SET DEFAULT LINK TO 1'st PAGE
-if ($_SERVER['REQUEST_URI'] == "/$folder_of_website/") {
+if ($_SERVER['REQUEST_URI'] == "/$folder_of_website[0]/") {
     header("Location: ?p=1");
 }
 // GETTING LOGIN DATA
@@ -10,7 +10,8 @@ $email = $_POST['email'];
 $pwd = $_POST['pwd'];
 
 // THIS IS REDIRECT FROM ADMIN WHEN USER TRIES TO ACCES IT W/OUT PERMISSION
-if ($_SESSION['not_logged'] == true) {
+
+if (isset($_SESSION['not_logged'])) {
     echo "You are not logged either you don't have permission";
     unset($_SESSION['not_logged']);
 }
@@ -51,6 +52,7 @@ if ($_SESSION['logged']) {
         echo "<h2><a href=\"administrator/\">New Post</a></h2>";
         $_SESSION['admin'] = true;
     }
+    $username;
     echo "<form action=\"./\" method=\"POST\"><input type=\"submit\" name=\"logOut\" value=\"Log Out\"></form"; //LOGOUT BUTTON
 } else {
      echo "Please login as admin to be able to post"; // IF THE USER IS NOT ADMIN DOES THIS
@@ -71,7 +73,7 @@ if (isset($_POST['logOut'])) {
     <title>Blog - Engine</title>
 </head>
 <body>
-    <form action="./" method="POST">
+    <form action="" method="POST">
         <input type="email" name="email" placeholder="email...">
         <input type="password" name="pwd" placeholder="password...">
         <input type="submit" name="login" value="Login>>">

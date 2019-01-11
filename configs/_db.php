@@ -1,15 +1,15 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 // SOME CONFIG FILES
-$folder_of_website = 'blog-engine';
+$folder_of_website = array("blog-engine", "blog-engine/index.php");
 $page_limit = 2;
 // MAIN CSS FILE
 $main_css = 'style.css';
 // DECLARATION OF SESSIONS
-$_SESSION['not_logged'];
-$_SESSION['logged'];
-$_SESSION['admin'];
+// $_SESSION['not_logged'];
+// $_SESSION['logged'];
+// $_SESSION['admin'];
 // DATABASE CONF
 $servername = "localhost";
 $username = "root";

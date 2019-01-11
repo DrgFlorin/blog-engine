@@ -24,8 +24,8 @@ if (isset($_POST['addBtn'])) {
 if ($_SESSION['logged'] == true && $_SESSION['admin'] == 1) {
     // echo "Logged In";
 } else {
-    header('Location: http://localhost/blog-engine/');
     $_SESSION['not_logged'] = true;
+    header('Location: http://localhost/blog-engine/');
 }
 ?>
 
@@ -40,7 +40,7 @@ if ($_SESSION['logged'] == true && $_SESSION['admin'] == 1) {
 
 <body>
     <h2><a href="../">Back to Main</a></h2>
-    <form action="./" method="POST">
+    <form action="" method="POST">
         <input type="text" name="title" placeholder="title...">
 
         <textarea rows="4" cols="50" name="content" placeholder="content..."></textarea>
